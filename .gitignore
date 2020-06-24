@@ -1,0 +1,7 @@
+.idea
+docker-efi.iso-state
+docker-efi-state
+docker-efi-for-mac.iso-state
+docker-efi-for-mac-state
+*.iso
+

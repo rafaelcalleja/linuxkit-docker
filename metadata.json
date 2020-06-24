@@ -1,0 +1,9 @@
+{
+  "docker": {
+    "entries": {
+      "daemon.json": {
+        "content": "{\n  \"debug\" : true,\n  \"experimental\" : true,\n  \"hosts\": [\"unix:///var/run/docker.sock\", \"tcp://0.0.0.0:2376\"]\n }\n"
+      }
+    }
+  }
+}
