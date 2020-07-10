@@ -19,6 +19,8 @@ onboot:
     image: linuxkit/mount:v0.8
     command: ["/usr/bin/mountie", "/var/lib/docker"]
 services:
+  - name: sshd
+    image: linuxkit/sshd:v0.8
   - name: getty
     image: linuxkit/getty:v0.8
     env:
@@ -43,9 +45,14 @@ services:
       - /lib/modules:/lib/modules
       - /run/config/docker/daemon.json:/etc/docker/daemon.json
     command: ["/usr/local/bin/docker-init", "/usr/local/bin/dockerd"]
+    rootfsPropagation: shared
 files:
   - path: var/lib/docker
     directory: true
+  - path: root/.ssh/authorized_keys
+    source: ~/.ssh/id_rsa.pub
+    mode: "0600"
+    optional: true
 trust:
   org:
     - linuxkit
